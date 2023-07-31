@@ -61,12 +61,12 @@ class DepartementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, departement $departementsliste)
+    public function update(Request $request, departement $result)
     {
         try {
-            $departementsliste-> nom = $request->nom;
-            $departementsliste-> responsable = $request->responsable;
-            $departementsliste->update();
+            $result-> nom = $request->nom;
+            $result-> responsable = $request->responsable;
+            $result->update();
             return back()->with('message', 'La modification...');
         } catch (\Throwable $e) {
             dd($e);

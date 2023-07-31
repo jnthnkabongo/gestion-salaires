@@ -71,13 +71,10 @@
                                             <td class="cell">{{ $result->created_at }}</td>
                                             <td class="cell">
                                                 <a class="btn-lg app-btn-secondary" href="{{ route('modifier-departement', $result->id) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
-                                                <form action="{{ route('supprimer-departement', $result->id) }}" method="DELETE">
-                                                    @csrf
-                                                    <a class="btn-sm app-btn-secondary" href=""><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
-                                                </form>
+                                                <a class="btn-sm app-btn-secondary" href=""><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
                                             </td>
                                         </tr>
-                                        
+
                                         @endforeach
                                     </tbody>
                                 </table>

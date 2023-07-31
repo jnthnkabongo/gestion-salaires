@@ -22,7 +22,7 @@
                     <div class="app-card app-card-settings shadow-sm p-4">
 
                         <div class="app-card-body">
-                            <form class="settings-form" action="" method="GET">
+                            <form class="settings-form" action="{{ route('modifiers-departement', $result->id) }}" method="GET">
                                 @csrf
 
                                 <div class="mb-3">
@@ -37,7 +37,7 @@
                                     <label for="setting-input-2" class="form-label">Responsable Département</label>
                                     <input type="text" class="form-control" name="responsable" value="{{ $result->responsable }}">
                                 </div>
-                          
+
 
                                 <button type="submit" class="btn app-btn-primary" >Modifier </button>
                             </form>
