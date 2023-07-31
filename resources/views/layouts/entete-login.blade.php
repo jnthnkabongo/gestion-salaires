@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    <nav id="nav" class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
+    <nav id="nav" class="navbar navbar-expand-lg navbar-dark bg-success" aria-label="Eighth navbar example">
        <div class="container">
         <a class="navbar-brand" href="#">Gestion des Salaires Employés</a>
        </div>

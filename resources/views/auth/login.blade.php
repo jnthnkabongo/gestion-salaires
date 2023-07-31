@@ -33,7 +33,7 @@
                         @enderror
                     </div>
                     <div class="form-floating mb-3">
-                        <button class="w-100 btn btn-lg btn-primary" type="submit">Se connecter</button>
+                        <button class="w-100 btn btn-lg btn-success" type="submit">Se connecter</button>
                         <hr class="my-4">
                         <small class="text-muted">En vous connectant vous acceptez les conditions d'utilisation</small>
                     </div>

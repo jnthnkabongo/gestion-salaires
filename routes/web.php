@@ -26,7 +26,20 @@ Route::get('gestion-app', [homeController::class, 'index'])->name('redirect');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [DashboardControler::class, 'index'])->name('dashboard');
+    //CRUD EMPLOYER
     Route::get('liste-employer', [EmployersController::class, 'index'])->name('liste-employer');
-    Route::get('liste-departement', [DepartementController::class, 'index'])->name('liste-departement');
+    //FIN CRUD EMPLOYER
+
+    //CURD DEPARTEMENT
+    Route::get('liste-departement', [DepartementController::class, 'index'])->name('liste-departement'); //Liste departements
+    Route::post('créer-departement', [DepartementController::class, 'create'])->name('créer-departement'); //Création département
+    Route::get('afficher-departement', [DepartementController::class, 'show'])->name('afficher-departement'); // Afficher page de modification département
+    Route::get('modifier-departement/{result}', [DepartementController::class, 'edit'])->name('modifier-departement'); //Modification département
+    Route::put('modifiers-departement/{id}', [DepartementController::class, 'update'])->name('modifiers-departement'); //Modification département
+    Route::delete('supprimer-departement/{result}', [DepartementController::class, 'destroy'])->name('supprimer-departement'); //Suppression département
+    //FIN CRUD DEPARTEMENT
+
+    //CRUD SALAIRES
     Route::get('liste-salaires', [SalairesController::class, 'index'])->name('liste-salaire');
+    //FIN CRUD SALAIRES
 });
