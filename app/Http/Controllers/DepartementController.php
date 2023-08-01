@@ -20,7 +20,7 @@ class DepartementController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(departement $Departement ,saveDepartementsRequest $request)
+    public function create(departement $Departement, saveDepartementsRequest $request)
     {
         try {
 

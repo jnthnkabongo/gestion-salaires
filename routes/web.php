@@ -27,7 +27,10 @@ Route::get('gestion-app', [homeController::class, 'index'])->name('redirect');
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [DashboardControler::class, 'index'])->name('dashboard');
     //CRUD EMPLOYER
-    Route::get('liste-employer', [EmployersController::class, 'index'])->name('liste-employer');
+    Route::get('liste-employer', [EmployersController::class, 'index'])->name('liste-employer'); //Liste employers
+    Route::get('créer-employer', [EmployersController::class, 'create'])->name('afficher-employer'); //Afficher le formulaire employer
+    Route::post('créer-employers', [EmployersController::class, 'store'])->name('créer-employer'); //Soumission du formulaire employer
+
     //FIN CRUD EMPLOYER
 
     //CURD DEPARTEMENT

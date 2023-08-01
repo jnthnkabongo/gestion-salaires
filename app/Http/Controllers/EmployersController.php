@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\saveEmployersRequest;
+use App\Models\departement;
 use App\Models\employers;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,8 @@ class EmployersController extends Controller
      */
     public function index()
     {
-        return view('pages.administration.liste-employer');
+        $employersliste = employers::paginate(10);
+        return view('pages.administration.liste-employer', compact('employersliste'));
     }
 
     /**
@@ -20,15 +23,30 @@ class EmployersController extends Controller
      */
     public function create()
     {
-        //
+        //La recuperation du departement dans le select de la creation employer se fait ici
+        $departementliste = departement::all();
+        return view('pages.administration.creer-employer', compact('departementliste'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(saveEmployersRequest $request, employers $Employer)
     {
-        //
+        try {
+            $Employer-> nom = $request->nom;
+            $Employer-> prenom = $request->prenom;
+            $Employer-> postnom = $request->postnom;
+            $Employer-> sexe = $request->sexe;
+            $Employer-> age = $request->age;
+            $Employer-> contact = $request->contact;
+            $Employer-> montant_journalier = $request->montant_journalier;
+            $Employer->save();
+            return back()->with('message', 'La création de l\'employé s\'est effectué avec succès');
+
+        } catch (\Throwable $e) {
+            dd($e);
+        }
     }
 
     /**
