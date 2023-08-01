@@ -21,18 +21,9 @@ class EmployersController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(employers $Employer, saveEmployersRequest $request)
     {
-        //La recuperation du departement dans le select de la creation employer se fait ici
-        $departementliste = departement::all();
-        return view('pages.administration.creer-employer', compact('departementliste'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(saveEmployersRequest $request, employers $Employer)
-    {
+        dd($Employer);
         try {
             $Employer-> nom = $request->nom;
             $Employer-> prenom = $request->prenom;
@@ -47,6 +38,17 @@ class EmployersController extends Controller
         } catch (\Throwable $e) {
             dd($e);
         }
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store()
+    {
+          //La recuperation du departement dans le select de la creation employer se fait ici
+          $departementliste = departement::all();
+          return view('pages.administration.creer-employer', compact('departementliste'));
     }
 
     /**

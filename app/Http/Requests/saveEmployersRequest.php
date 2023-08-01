@@ -22,13 +22,13 @@ class saveEmployersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nom' => 'required|string',
-            'prenom' => 'required|string',
-            'postnom' => 'required|string',
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'postnom' => 'required|string|max:255',
             'email' => 'required|unique:employers,email',
-            'sexe' => 'required|string',
+            'sexe' => 'required|string|max:255',
             'age' => 'required|integer',
-            'contact' => 'requierd|unique:employers,contact',
+            'contact' => 'required|unique:employers,contact',
             'montant_journalier' => 'required',
             'departement_id' => 'required|integer'
         ];
