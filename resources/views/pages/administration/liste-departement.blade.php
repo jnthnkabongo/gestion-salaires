@@ -71,7 +71,7 @@
                                             <td class="cell">{{ $result->created_at }}</td>
                                             <td class="cell">
                                                 <a class="btn-lg app-btn-secondary" href="{{ route('modifier-departement', $result->id) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
-                                                <a class="btn-sm app-btn-secondary" href=""><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
+                                                <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-departement', $result->id) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
                                             </td>
                                         </tr>
 

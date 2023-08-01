@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('afficher-departement', [DepartementController::class, 'show'])->name('afficher-departement'); // Afficher page de modification département
     Route::get('modifier-departement/{result}', [DepartementController::class, 'edit'])->name('modifier-departement'); //Modification département
     Route::get('modifiers-departement/{result}', [DepartementController::class, 'update'])->name('modifiers-departement'); //Modification département
-    Route::delete('supprimer-departement/{result}', [DepartementController::class, 'destroy'])->name('supprimer-departement'); //Suppression département
+    Route::get('supprimer-departement/{result}', [DepartementController::class, 'destroy'])->name('supprimer-departement'); //Suppression département
     //FIN CRUD DEPARTEMENT
 
     //CRUD SALAIRES
