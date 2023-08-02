@@ -6,6 +6,7 @@ use App\Http\Requests\saveEmployersRequest;
 use App\Models\departement;
 use App\Models\employers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployersController extends Controller
 {
@@ -14,7 +15,7 @@ class EmployersController extends Controller
      */
     public function index()
     {
-        $employersliste = employers::paginate(10);
+        $employersliste = DB::table('employers')->join('departements','employers.departement_id', '=', 'departements.id_dep')->orderByDesc('id')->paginate(10);
         return view('pages.administration.liste-employer', compact('employersliste'));
     }
 
@@ -23,11 +24,14 @@ class EmployersController extends Controller
      */
     public function create(employers $Employer, saveEmployersRequest $request)
     {
-        dd($Employer);
+       // dd($request);
         try {
+            $Employer->departement_id = $request->departement_id;
+            $Employer->roles_id = $request->roles_id;
             $Employer-> nom = $request->nom;
             $Employer-> prenom = $request->prenom;
             $Employer-> postnom = $request->postnom;
+            $Employer-> email = $request->email;
             $Employer-> sexe = $request->sexe;
             $Employer-> age = $request->age;
             $Employer-> contact = $request->contact;

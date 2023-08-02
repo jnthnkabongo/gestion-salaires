@@ -22,6 +22,7 @@ class saveEmployersRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'departement_id' => 'required|integer',
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'postnom' => 'required|string|max:255',
@@ -29,8 +30,7 @@ class saveEmployersRequest extends FormRequest
             'sexe' => 'required|string|max:255',
             'age' => 'required|integer',
             'contact' => 'required|unique:employers,contact',
-            'montant_journalier' => 'required',
-            'departement_id' => 'required|integer'
+            'montant_journalier' => 'required|integer'
         ];
     }
 }

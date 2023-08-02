@@ -72,7 +72,7 @@
                                     <tbody>
                                         @foreach ($employersliste as $item)
                                         <tr>
-                                            <td class="cell">#</td>
+                                            <td class="cell">{{ $item->id }}</td>
                                             <td class="cell"><span class="truncate">{{ $item->nom }}</span></td>
                                             <td class="cell">{{ $item->postnom }}</td>
                                             <td class="cell">{{ $item->prenom }}</td>
@@ -81,7 +81,7 @@
                                             <td class="cell">{{ $item->age }}</td>
                                             <td class="cell">{{ $item->contact }}</td>
                                             <td class="cell">{{ $item->montant_journalier }}</td>
-                                            <td class="cell">{{ $item->departement }}</td>
+                                            <td class="cell">{{ $item->nom_dep }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
