@@ -13,7 +13,7 @@ class DepartementController extends Controller
      */
     public function index()
     {
-        $departementsliste = departement::paginate(10);
+        $departementsliste = departement::orderByDesc('id_dep')->paginate(10);
         return view('pages.administration.liste-departement', compact('departementsliste'));
     }
 

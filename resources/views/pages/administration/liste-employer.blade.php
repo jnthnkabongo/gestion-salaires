@@ -80,7 +80,7 @@
                                             <td class="cell">{{ $item->sexe }}</td>
                                             <td class="cell">{{ $item->age }}</td>
                                             <td class="cell">{{ $item->contact }}</td>
-                                            <td class="cell">{{ $item->montant_journalier }}</td>
+                                            <td class="cell">{{ $item->montant_journalier * 31}}</td>
                                             <td class="cell">{{ $item->nom_dep }}</td>
                                         </tr>
                                         @endforeach

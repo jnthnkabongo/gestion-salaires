@@ -65,13 +65,13 @@
                                     <tbody>
                                         @foreach ($departementsliste as $result)
                                         <tr>
-                                            <td class="cell">{{ $result->id }}</td>
-                                            <td class="cell">{{ $result->nom }}</td>
-                                            <td class="cell"> {{ $result->responsable }}</td>
+                                            <td class="cell">{{ $result->id_dep }}</td>
+                                            <td class="cell">{{ $result->nom_dep }}</td>
+                                            <td class="cell"> {{ $result->responsable_dep }}</td>
                                             <td class="cell">{{ $result->created_at }}</td>
                                             <td class="cell">
-                                                <a class="btn-lg app-btn-secondary" href="{{ route('modifier-departement', $result->id) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
-                                                <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-departement', $result->id) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
+                                                <a class="btn-lg app-btn-secondary" href="{{ route('modifier-departement', $result->id_dep) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
+                                                <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-departement', $result->id_dep) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
                                             </td>
                                         </tr>
 
