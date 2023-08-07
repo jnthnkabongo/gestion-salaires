@@ -13,7 +13,7 @@ class DepartementController extends Controller
      */
     public function index()
     {
-        $departementsliste = departement::orderByDesc('id_dep')->paginate(10);
+        $departementsliste = departement::orderByDesc('id')->paginate(10);
         return view('pages.administration.liste-departement', compact('departementsliste'));
     }
 
@@ -23,9 +23,8 @@ class DepartementController extends Controller
     public function create(departement $Departement, saveDepartementsRequest $request)
     {
         try {
-
-            $Departement-> nom = $request->nom;
-            $Departement-> responsable = $request->responsable;
+            $Departement-> nom_dep = $request->nom_dep;
+            $Departement-> responsable_dep = $request->responsable_dep;
             $Departement->save();
             return back()->with('message', 'Le département a êté créer avec succès !!');
             //return redirect()->route('liste-departement');
@@ -64,8 +63,8 @@ class DepartementController extends Controller
     public function update(Request $request, departement $result)
     {
         try {
-            $result-> nom = $request->nom;
-            $result-> responsable = $request->responsable;
+            $result-> nom_dep = $request->nom_dep;
+            $result-> responsable_dep = $request->responsable_dep;
             $result->update();
             return back()->with('message', 'La modification...');
         } catch (\Throwable $e) {

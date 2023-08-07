@@ -67,21 +67,31 @@
                                             <th class="cell">Contact</th>
                                             <th class="cell">Montant journalier</th>
                                             <th class="cell">Departement</th>
+                                            <th class="cell">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($employersliste as $item)
                                         <tr>
-                                            <td class="cell">{{ $item->id }}</td>
-                                            <td class="cell"><span class="truncate">{{ $item->nom }}</span></td>
-                                            <td class="cell">{{ $item->postnom }}</td>
-                                            <td class="cell">{{ $item->prenom }}</td>
-                                            <td class="cell">{{ $item->email }}</td>
-                                            <td class="cell">{{ $item->sexe }}</td>
-                                            <td class="cell">{{ $item->age }}</td>
-                                            <td class="cell">{{ $item->contact }}</td>
-                                            <td class="cell">{{ $item->montant_journalier * 31}}</td>
-                                            <td class="cell">{{ $item->nom_dep }}</td>
+                                            <td class="cell">{{ $item->id_em }}</td>
+                                            <td class="cell"><span class="truncate">{{ Str::upper( $item->nom) }}</span></td>
+                                            <td class="cell">{{ Str::upper( $item->postnom) }}</td>
+                                            <td class="cell">{{ Str::upper( $item->prenom) }}</td>
+                                            <td class="cell">{{ Str::upper( $item->email) }}</td>
+                                            <td class="cell">{{ Str::upper( $item->sexe) }}</td>
+                                            <td class="cell">{{ Str::upper( $item->age) }}</td>
+                                            <td class="cell">{{ Str::upper( $item->contact) }}</td>
+                                            <td class="cell">
+                                                {{ $item->montant_journalier * 31}}
+                                                <span class="badge bg-success">
+                                                    Fc
+                                                </span>
+                                            </td>
+                                            <td class="cell">{{ Str::upper( $item->nom_dep) }}</td>
+                                            <td class="cell">
+                                                <a class="btn-lg app-btn-secondary" href="{{ route('modifier-departement', $item->id_em) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
+                                                <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-departement', $item->id_em) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

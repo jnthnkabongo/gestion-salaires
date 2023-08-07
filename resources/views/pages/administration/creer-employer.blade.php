@@ -33,7 +33,7 @@
                                     <select class="form-select form-select-md md-auto " name="departement_id">
 									    <option value="" selected>Choisir le département</option>
                                         @foreach ($departementliste as $item)
-                                            <option name="departement_id" value="{{ $item->id }}">{{ $item->nom_dep }}</option>
+                                            <option name="departement_id" value="{{ $item->id_dep }}">{{ $item->nom_dep }}</option>
                                         @endforeach
 									</select>
                                 </div>

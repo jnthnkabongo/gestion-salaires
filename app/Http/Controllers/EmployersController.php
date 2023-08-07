@@ -12,10 +12,11 @@ class EmployersController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * orderByDesc('id')->
      */
     public function index()
     {
-        $employersliste = DB::table('employers')->join('departements','employers.departement_id', '=', 'departements.id_dep')->orderByDesc('id')->paginate(10);
+        $employersliste = DB::table('employers')->join('departements','employers.departement_id', '=', 'departements.id')->orderByDesc('id_em')->paginate(10);
         return view('pages.administration.liste-employer', compact('employersliste'));
     }
 

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_em')->primary();
             $table->string('nom');
             $table->string('prenom');
             $table->string('postnom');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('departement_id');
             $table->foreign('departement_id')->references('id')->on('departements');
             $table->unsignedBigInteger('roles_id');
-            $table->foreign('roles_id')->references('id')->on('roles');
+            $table->foreign('roles_id')->references('id_ro')->on('roles');
             $table->timestamps();
         });
     }

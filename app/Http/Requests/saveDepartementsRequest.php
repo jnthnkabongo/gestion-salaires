@@ -22,8 +22,8 @@ class saveDepartementsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nom' => 'required|unique:departements,nom',
-            'responsable' => 'required'
+            'nom_dep' => 'required|unique:departements,nom_dep',
+            'responsable_dep' => 'required'
         ];
     }
     public function message(){
