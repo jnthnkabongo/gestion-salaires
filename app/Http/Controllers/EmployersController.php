@@ -59,9 +59,9 @@ class EmployersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(employers $employers)
+    public function show(employers $item)
     {
-        //
+        return view('pages.administration.modifier-employer', compact('item'));
     }
 
     /**

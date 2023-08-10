@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('liste-employer', [EmployersController::class, 'index'])->name('liste-employer'); //Liste employers
     Route::get('afficher-employer', [EmployersController::class, 'store'])->name('afficher-employer'); //Afficher le formulaire employer
     Route::post('créer-employers', [EmployersController::class, 'create'])->name('créer-employer'); //Soumission du formulaire employer
+    Route::get('afficher-employers/{resultat}', [EmployersController::class, 'show'])->name('afficher-employers'); //Soumission du formulaire employer
 
     //FIN CRUD EMPLOYER
 

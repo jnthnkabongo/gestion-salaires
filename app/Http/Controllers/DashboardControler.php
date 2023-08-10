@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\departement;
+use App\Models\employers;
+use App\Models\salaires;
 use Illuminate\Http\Request;
 
 class DashboardControler extends Controller
@@ -11,7 +14,10 @@ class DashboardControler extends Controller
      */
     public function index()
     {
-        return view('pages.administration.dashboard');
+       // $Employer = employers::count();
+        $compteurDepartement = departement::all();
+        $compteurSalaire = salaires::count();
+        return view('pages.administration.dashboard', compact('Employer'));
     }
 
     /**
