@@ -23,14 +23,21 @@ class saveEmployersRequest extends FormRequest
     {
         return [
             'departement_id' => 'required|integer',
-            'nom' => 'required|string|max:255',
-            'prenom' => 'required|string|max:255',
-            'postnom' => 'required|string|max:255',
+            'nom' => 'required|string',
+            'prenom' => 'required|string',
+            'postnom' => 'required|string',
             'email' => 'required|unique:employers,email',
-            'sexe' => 'required|string|max:255',
+            'sexe' => 'required|string',
             'age' => 'required|integer',
             'contact' => 'required|unique:employers,contact',
             'montant_journalier' => 'required|integer'
+        ];
+    }
+
+    public function message(){
+        return [
+            'email.required' => 'l\'email est requis',
+            'email.unique' => 'l\'email est unique'
         ];
     }
 }

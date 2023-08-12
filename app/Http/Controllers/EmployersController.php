@@ -16,8 +16,10 @@ class EmployersController extends Controller
      */
     public function index()
     {
-        $employersliste = DB::table('employers')->join('departements','employers.departement_id', '=', 'departements.id')->orderByDesc('id_em')->paginate(10);
+        $employersliste = employers::with('departement')->paginate(10);
         return view('pages.administration.liste-employer', compact('employersliste'));
+       /* $employersliste = DB::table('departements')->join('employers','employers.departement_id', '=', 'departements.id')->orderByDesc('id_em')->paginate(10);
+        return view('pages.administration.liste-employer', compact('employersliste'));*/
     }
 
     /**
@@ -25,7 +27,6 @@ class EmployersController extends Controller
      */
     public function create(employers $Employer, saveEmployersRequest $request)
     {
-       // dd($request);
         try {
             $Employer->departement_id = $request->departement_id;
             $Employer->roles_id = $request->roles_id;
@@ -38,12 +39,16 @@ class EmployersController extends Controller
             $Employer-> contact = $request->contact;
             $Employer-> montant_journalier = $request->montant_journalier;
             $Employer->save();
-            return back()->with('message', 'La création de l\'employé s\'est effectué avec succès');
+            //return redirect()->route('liste-employer')->with('success_message', 'La création de l\'employé s\'est effectué avec succès');
+            return back()->with('success_message', 'La création de l\'employé s\'est effectué avec succès');
 
         } catch (\Throwable $e) {
             dd($e);
         }
-
+        /*$query = employers::create($request->all);
+        if ($query){
+            return redirect('administration.liste-employer')->with('success_message', 'Employer ajouter');
+        }*/
     }
 
     /**
@@ -59,9 +64,10 @@ class EmployersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(employers $item)
+    public function show(employers $resultat)
     {
-        return view('pages.administration.modifier-employer', compact('item'));
+       // $resultat = DB::table('employers')->join('departements','employers.departement_id', '=', 'departements.id');
+        return view('pages.administration.modifier-employer', compact('resultat'));
     }
 
     /**

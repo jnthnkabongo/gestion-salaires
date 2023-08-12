@@ -47,8 +47,11 @@
                 <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab" href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Pending</a>
                 <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab" href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Cancelled</a>
             </nav>
-
-
+            @if (Session::get('success_message'))
+            <div class="alert alert-successs">
+                {{ Session::get('success_message') }}
+            </div>
+            @endif
             <div class="tab-content" id="orders-table-tab-content">
                 <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
                     <div class="app-card app-card-orders-table shadow-sm mb-5">
@@ -73,7 +76,7 @@
                                     <tbody>
                                         @foreach ($employersliste as $resultat)
                                         <tr>
-                                            <td class="cell">{{ $resultat->id_em }}</td>
+                                            <td class="cell">{{ $resultat->id }}</td>
                                             <td class="cell"><span class="truncate">{{ Str::upper( $resultat->nom) }}</span></td>
                                             <td class="cell">{{ Str::upper( $resultat->postnom) }}</td>
                                             <td class="cell">{{ Str::upper( $resultat->prenom) }}</td>
@@ -87,10 +90,10 @@
                                                     Fc
                                                 </span>
                                             </td>
-                                            <td class="cell">{{ Str::upper( $resultat->nom_dep) }}</td>
+                                            <td class="cell">{{ Str::upper( $resultat->departement->nom_dep) }}</td>
                                             <td class="cell">
-                                                <a class="btn-lg app-btn-secondary" href="{{ route('afficher-employers', $resultat->id_em) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
-                                                <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-departement', $resultat->id_em) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
+                                                <a class="btn-lg app-btn-secondary" href="{{ route('afficher-employers', $resultat->id) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
+                                                <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-departement', $resultat->id) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
                                             </td>
                                         </tr>
                                         @endforeach
