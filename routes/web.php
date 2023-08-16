@@ -29,8 +29,11 @@ Route::middleware(['auth'])->group(function () {
     //CRUD EMPLOYER
     Route::get('liste-employer', [EmployersController::class, 'index'])->name('liste-employer'); //Liste employers
     Route::get('afficher-employer', [EmployersController::class, 'store'])->name('afficher-employer'); //Afficher le formulaire employer
-    Route::post('créer-employers', [EmployersController::class, 'create'])->name('créer-employer'); //Soumission du formulaire employer
+    Route::post('créer-employer', [EmployersController::class, 'create'])->name('créer-employer'); //Soumission du formulaire employer
+    Route::post('creation', [EmployersController::class, 'creation'])->name('creation');
     Route::get('afficher-employers/{resultat}', [EmployersController::class, 'show'])->name('afficher-employers'); //Soumission du formulaire employer
+    Route::get('modifier-employer/{resultat}', [EmployersController::class, 'edit'])->name('modifier-employer');
+    Route::get('supprimer-employers/{resultat}',[EmployersController::class, 'destroy'])->name('supprimer-employers'); //Suppression de l'emploter
 
     //FIN CRUD EMPLOYER
 

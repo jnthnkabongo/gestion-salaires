@@ -81,7 +81,7 @@ class DepartementController extends Controller
             $result->delete();
             return back()->with('message', 'Le département a été supprimer avec succès!!');
         } catch (\Throwable $e) {
-            //throw $th;
+            $e;
         }
     }
 }

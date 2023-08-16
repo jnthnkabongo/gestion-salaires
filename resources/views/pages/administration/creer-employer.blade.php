@@ -24,7 +24,6 @@
                         <div class="app-card-body">
                             <form class="settings-form" action="{{ route('créer-employer') }}" method="POST">
                                 @csrf
-                                @method('POST')
                                 <div class="mb-3">
                                     <label for="setting-input-1" class="form-label">Département <span class="ms-2" data-container="body" data-bs-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is a Bootstrap popover example. You can use popover to provide extra info."><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -34,7 +33,7 @@
                                     <select class="form-select form-select-md md-auto " name="departement_id">
 									    <option value="" selected>Choisir le département</option>
                                         @foreach ($departementliste as $item)
-                                            <option name="departement_id" value="{{ $item->id_dep }}">{{ $item->nom_dep }}</option>
+                                            <option name="departement_id" value="{{ $item->id }}">{{ $item->nom_dep }}</option>
                                         @endforeach
 									</select>
                                 </div>

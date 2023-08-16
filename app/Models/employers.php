@@ -8,6 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class employers extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'id',
+        'nom',
+        'prenom',
+        'postnom',
+        'email',
+        'sexe',
+        'age',
+        'contact',
+        'montant_jourmalier',
+        'departement_id',
+        'roles_id'
+    ];
 
     /**
      * Get the user that owns the employers

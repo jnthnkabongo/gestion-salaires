@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmployerRequestSave;
 use App\Http\Requests\saveEmployersRequest;
+use App\Http\Requests\updateEmployer;
 use App\Models\departement;
 use App\Models\employers;
 use Illuminate\Http\Request;
@@ -16,10 +18,30 @@ class EmployersController extends Controller
      */
     public function index()
     {
-        $employersliste = employers::with('departement')->paginate(10);
+        $employersliste = employers::with('departement')->orderByDesc('id')->paginate(10);
         return view('pages.administration.liste-employer', compact('employersliste'));
        /* $employersliste = DB::table('departements')->join('employers','employers.departement_id', '=', 'departements.id')->orderByDesc('id_em')->paginate(10);
         return view('pages.administration.liste-employer', compact('employersliste'));*/
+    }
+    public function creation (employers $Employer, EmployerRequestSave $request){
+        try {
+            $Employer->departement_id = $request->departement_id;
+            $Employer->roles_id = $request->roles_id;
+            $Employer-> nom = $request->nom;
+            $Employer-> prenom = $request->prenom;
+            $Employer-> postnom = $request->postnom;
+            $Employer-> email = $request->email;
+            $Employer-> sexe = $request->sexe;
+            $Employer-> age = $request->age;
+            $Employer-> contact = $request->contact;
+            $Employer-> montant_journalier = $request->montant_journalier;
+            $Employer->save();
+            //return redirect()->route('liste-employer')->with('success_message', 'La création de l\'employé s\'est effectué avec succès');
+            return back()->with('message', 'La création de l\'employé s\'est effectué avec succès');
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**
@@ -40,7 +62,7 @@ class EmployersController extends Controller
             $Employer-> montant_journalier = $request->montant_journalier;
             $Employer->save();
             //return redirect()->route('liste-employer')->with('success_message', 'La création de l\'employé s\'est effectué avec succès');
-            return back()->with('success_message', 'La création de l\'employé s\'est effectué avec succès');
+            return back()->with('message', 'La création de l\'employé s\'est effectué avec succès');
 
         } catch (\Throwable $e) {
             dd($e);
@@ -66,16 +88,31 @@ class EmployersController extends Controller
      */
     public function show(employers $resultat)
     {
-       // $resultat = DB::table('employers')->join('departements','employers.departement_id', '=', 'departements.id');
-        return view('pages.administration.modifier-employer', compact('resultat'));
+        $departements = departement::all();
+        return view('pages.administration.modifier-employer', compact('resultat', 'departements'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(employers $employers)
+    public function edit(Request $request, employers $resultat)
     {
-        //
+        try {
+            //dd($request);
+            $resultat->departement_id = $request->departement_id;
+            $resultat->nom = $request->nom;
+            $resultat->prenom = $request->prenon;
+            $resultat->postnom = $request->postnom;
+            $resultat->email = $request->email;
+            $resultat->sexe = $request->sexe;
+            $resultat->age = $request->age;
+            $resultat->contact = $request->contact;
+            $resultat->montant_journalier = $request->montant_journalier;
+            $resultat->update();
+            return back()->with('message', 'La modification de l\'employer s\'est effectué avec succès !!');
+        } catch (\Throwable $e) {
+            dd($e);
+        }
     }
 
     /**
@@ -89,8 +126,13 @@ class EmployersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(employers $employers)
+    public function destroy(employers $resultat)
     {
-        //
+        try {
+            $resultat->delete();
+            return back()->with('message', 'L\'employer a été supprimer avec succès !!');
+        } catch (\Throwable $e) {
+            dd($e);
+        }
     }
 }

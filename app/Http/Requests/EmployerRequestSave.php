@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class saveEmployersRequest extends FormRequest
+class EmployerRequestSave extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,22 +22,20 @@ class saveEmployersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'departement_id' => 'required|integer',
-            'nom' => 'required|string',
-            'postnom' => 'required|string',
-            'prenom' => 'required|string',
+            'departement_id' => 'required',
+            'nom' => 'required',
+            'postnom' => 'required',
+            'prenom' => 'required',
             'email' => 'required|unique:employers,email',
-            'sexe' => 'required|string',
-            'age' => 'required|integer',
-            'contact' => 'required|unique:employers,contact',
-            'montant_journalier' => 'required|integer'
+            'sexe' => 'required',
+            'age' => 'required',
+            'contact' => 'required',
+            'montant_journalier' => 'required'
         ];
     }
-
     public function message(){
         return [
-            'email.required' => 'l\'email est requis',
-            'email.unique' => 'l\'email est unique'
+            'email.required' => 'L\'email existe déjà'
         ];
     }
 }

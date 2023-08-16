@@ -12,7 +12,7 @@
                         <div class="row align-items-start">
                             <div class="col"></div>
                             <div class="col">
-                                <img class="rounded-3" src="{{ asset('images/cenis.jpg') }}" width="120px" height="120px" alt="" srcset="">
+                                <img class="rounded-3" src="{{ asset('assets/images/1.png') }}" width="120px" height="120px" alt="" srcset="">
                             </div>
                             <div class="col"></div>
                         </div>

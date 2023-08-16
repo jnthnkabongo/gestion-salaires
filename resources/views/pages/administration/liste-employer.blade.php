@@ -93,13 +93,21 @@
                                             <td class="cell">{{ Str::upper( $resultat->departement->nom_dep) }}</td>
                                             <td class="cell">
                                                 <a class="btn-lg app-btn-secondary" href="{{ route('afficher-employers', $resultat->id) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
-                                                <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-departement', $resultat->id) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
+                                                <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-employers', $resultat->id) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                            </div><!--//table-responsive-->
+                                @if(Session::has('message'))
+                                        <script>
+                                            swal("Message", "{{ Session::get('message') }}", 'danger', {
+                                                button:true,
+                                                button: "OK"
+                                            });
+                                        </script>
+                                    @endif
+                            </div>
 
                         </div><!--//app-card-body-->
                     </div><!--//app-card-->
