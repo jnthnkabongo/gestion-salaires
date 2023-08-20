@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\departement;
+use App\Models\employers;
+use App\Models\salaires;
 
 class homeController extends Controller
 {
@@ -14,7 +17,10 @@ class homeController extends Controller
     {
         $roles = Auth::user()->roles_id;
         if ($roles == '1') {
-            return view('pages.administration.dashboard');
+            $compteurEmployers = employers::all()->count();
+            $compteurDepartement = departement::all()->count();
+            $compteurSalaire = salaires::all()->count();
+            return view('pages.administration.dashboard', compact('compteurEmployers', 'compteurDepartement', 'compteurSalaire'));
         }if ($roles == '2') {
             return view('pages.users.index');
         }else {

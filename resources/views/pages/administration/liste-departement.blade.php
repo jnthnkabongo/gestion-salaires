@@ -54,7 +54,7 @@
                                 <table class="table app-table-hover mb-0 text-left">
                                     <thead>
                                         <tr>
-                                            <th class="cell">N*</th>
+                                            <th class="cell">N°</th>
                                             <th class="cell">Nom département</th>
                                             <th class="cell">Responsable</th>
                                             <th class="cell">Date création</th>

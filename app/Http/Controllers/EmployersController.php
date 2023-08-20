@@ -61,8 +61,9 @@ class EmployersController extends Controller
             $Employer-> contact = $request->contact;
             $Employer-> montant_journalier = $request->montant_journalier;
             $Employer->save();
+            return redirect()->route('liste-employer')->with('message', 'La création de l\'employé s\'est effectué avec succès');
             //return redirect()->route('liste-employer')->with('success_message', 'La création de l\'employé s\'est effectué avec succès');
-            return back()->with('message', 'La création de l\'employé s\'est effectué avec succès');
+            //return back()->with('message', 'La création de l\'employé s\'est effectué avec succès');
 
         } catch (\Throwable $e) {
             dd($e);
@@ -98,7 +99,6 @@ class EmployersController extends Controller
     public function edit(Request $request, employers $resultat)
     {
         try {
-            //dd($request);
             $resultat->departement_id = $request->departement_id;
             $resultat->nom = $request->nom;
             $resultat->prenom = $request->prenon;
@@ -109,7 +109,8 @@ class EmployersController extends Controller
             $resultat->contact = $request->contact;
             $resultat->montant_journalier = $request->montant_journalier;
             $resultat->update();
-            return back()->with('message', 'La modification de l\'employer s\'est effectué avec succès !!');
+            return redirect()->route('liste-employer')->with('message', 'La modification de l\'employer s\'est effectué avec succès !!');
+            //return back()->with('message', 'La modification de l\'employer s\'est effectué avec succès !!');
         } catch (\Throwable $e) {
             dd($e);
         }

@@ -4,14 +4,20 @@
         <div class="app-content pt-3 p-md-3 p-lg-4">
 		    <div class="container-xl">
 			    <h1 class="app-page-title">Dashboard</h1>
+                <div class="row g-4 mb-4">
+                    <div class="col-6 col-lg-6"></div>
+                    <div class="col-6 col-lg-6">
+                        <div class="alert alert-warning">
+                            {{ $PaymentNotification }}
+                        </div>
+                    </div>
+                </div>
 			    <div class="row g-4 mb-4">
 				    <div class="col-6 col-lg-3">
 					    <div class="app-card app-card-stat shadow-sm h-100">
 						    <div class="app-card-body p-3 p-lg-4">
 							    <h4 class="stats-type mb-1">Total Employer</h4>
-
-                                    <div class="stats-figure"></div>
-
+                                    <div class="stats-figure">{{ $compteurEmployers }}</div>
 						    </div><!--//app-card-body-->
 						    <a class="app-card-link-mask" href="#"></a>
 					    </div><!--//app-card-->
@@ -20,7 +26,7 @@
 					    <div class="app-card app-card-stat shadow-sm h-100">
 						    <div class="app-card-body p-3 p-lg-4">
 							    <h4 class="stats-type mb-1">Total Département</h4>
-							    <div class="stats-figure">5</div>
+							    <div class="stats-figure">{{ $compteurDepartement }}</div>
 						    </div><!--//app-card-body-->
 						    <a class="app-card-link-mask" href="#"></a>
 					    </div><!--//app-card-->
@@ -29,7 +35,7 @@
 					    <div class="app-card app-card-stat shadow-sm h-100">
 						    <div class="app-card-body p-3 p-lg-4">
 							    <h4 class="stats-type mb-1">Total Net a payer</h4>
-							    <div class="stats-figure">2300</div>
+							    <div class="stats-figure">{{ $compteurSalaire }}</div>
 						    </div><!--//app-card-body-->
 						    <a class="app-card-link-mask" href="#"></a>
 					    </div><!--//app-card-->

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authController;
+use App\Http\Controllers\configurationController;
 use App\Http\Controllers\DashboardControler;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\EmployersController;
@@ -49,4 +50,11 @@ Route::middleware(['auth'])->group(function () {
     //CRUD SALAIRES
     Route::get('liste-salaires', [SalairesController::class, 'index'])->name('liste-salaire');
     //FIN CRUD SALAIRES
+
+    //CONFIGURATION
+    Route::get('configuration-liste', [configurationController::class, 'index'])->name('liste-configuration');
+    Route::get('afficher-configuration', [configurationController::class, 'store'])->name('afficher-configuration');
+    Route::post('créer-configuration', [configurationController::class, 'create'])->name('créer-configuration');
+    Route::get('supprimer-configuration/{config}', [configurationController::class, 'destroy'])->name('supprimer-configuration');
+    //FIN CONFIGURATION
 });
