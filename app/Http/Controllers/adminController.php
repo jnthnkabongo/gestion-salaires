@@ -19,7 +19,7 @@ class adminController extends Controller
      */
     public function index()
     {
-        $administrateurliste = User::paginate(10);
+        $administrateurliste = User::with('roles')->paginate(10);
         return view('pages.utilisateur.liste-administrateurs', compact('administrateurliste'));
 
     }

@@ -57,6 +57,7 @@
                                             <th class="cell">N°</th>
                                             <th class="cell">Nom complet</th>
                                             <th class="cell">E-mail</th>
+                                            <th class="cell">Roles</th>
                                             <th class="cell">Date de création</th>
                                             <th class="cell">Action</th>
                                         </tr>
@@ -67,6 +68,7 @@
                                             <td class="cell">{{ $admin->id }}</td>
                                             <td class="cell">{{ Str::upper($admin->name) }}</td>
                                             <td class="cell">{{ Str::upper($admin->email) }}</td>
+                                            <td class="cell">{{ Str::upper($admin->roles->intitule) }}</td>
                                             <td class="cell">{{ $admin->created_at }}</td>
                                             <td class="cell">
                                                 <a class="btn-lg app-btn-secondary" href="{{ route('liste-configuration', $admin->id) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
