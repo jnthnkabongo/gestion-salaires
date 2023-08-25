@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\configurationController;
 use App\Http\Controllers\DashboardControler;
@@ -57,4 +58,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('créer-configuration', [configurationController::class, 'create'])->name('créer-configuration');
     Route::get('supprimer-configuration/{config}', [configurationController::class, 'destroy'])->name('supprimer-configuration');
     //FIN CONFIGURATION
+
+    //AMINSITRATEURS
+
+    Route::prefix('administrateur')->group(function(){
+        Route::get('affichage', [adminController::class, 'index'])->name('admin-index');
+        Route::get('créer', [adminController::class, 'create'])->name('admin-create');
+        Route::post('créer', [adminController::class, 'store'])->name('admin-store');
+        Route::get('/{administrateur}', [adminController::class, 'update'])->name('admin-indupdateex');
+        Route::get('/{administrateur}', [adminController::class, 'destroy'])->name('admin-destroy');
+
+    });
 });

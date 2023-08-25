@@ -22,7 +22,7 @@
                         <div class="container-fluid py-2">
                             <div class="app-header-content">
                                 <div class="row justify-content-between align-items-center">
-                                  
+
                                 <div class="col-auto">
                                     <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
@@ -33,7 +33,7 @@
                                 </div><!--//col-->
                                 <div class="app-search-box col">
                                     <form class="app-search-form">
-                                        <input type="text" placeholder="Search..." name="search" class="form-control search-input">
+                                        <input type="text" placeholder="Rechercher..." name="search" class="form-control search-input">
                                         <button type="submit" class="btn search-btn btn-primary" value="Search"><i class="fas fa-search"></i></button>
                                     </form>
                                 </div><!--//app-search-box-->
@@ -156,7 +156,7 @@
                         <div class="sidepanel-inner d-flex flex-column">
                             <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
                             <div class="app-branding">
-                                <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo"><span class="logo-text">GESTION APP</span></a>
+                                <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo"><span class="logo-text">{{ AppNameGetter::getAllName() ? AppNameGetter::getAllName() : 'Zozor' }}</span></a>
 
                             </div><!--//app-branding-->
 
@@ -211,6 +211,17 @@
                                               </svg>
                                             </span>
                                             <span class="nav-link-text">Salaires</span>
+                                        </a><!--//nav-link-->
+                                    </li><!--//nav-item-->
+                                    <li class="nav-item">
+                                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                                        <a class="nav-link" href="{{route('admin-index')}}">
+                                            <span class="nav-icon">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-columns-gap" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"/>
+                                              </svg>
+                                            </span>
+                                            <span class="nav-link-text">Administrateurs</span>
                                         </a><!--//nav-link-->
                                     </li><!--//nav-item-->
                                 </ul><!--//app-menu-->

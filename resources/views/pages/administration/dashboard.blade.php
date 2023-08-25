@@ -7,7 +7,8 @@
                 <div class="row g-4 mb-4">
                     <div class="col-6 col-lg-6"></div>
                     <div class="col-6 col-lg-6">
-                        <div class="alert alert-warning">
+                        <div class="alert alert-success"> <b>Attention : </b>
+
                             {{ $PaymentNotification }}
                         </div>
                     </div>

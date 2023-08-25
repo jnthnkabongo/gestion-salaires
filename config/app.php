@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\ConfigHelper;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -183,6 +184,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        //'AppNamegetter' => ConfigHelper::class
+        'AppNameGetter' => ConfigHelper::class
     ])->toArray(),
 
 ];
