@@ -23,8 +23,7 @@ class saveAdmins extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password'=> 'required'
+            'email' => 'required|email|unique:users,email',
         ];
     }
 
@@ -34,7 +33,6 @@ class saveAdmins extends FormRequest
             'email.required' => 'L\'e-mail est obligatoire',
             'email.unique' => 'Cette adresse e-mail est lié à un compte',
             'email.email' => 'L\'e-mail n\'est pas valide',
-            'password.required' => 'Le mot de passe est obligatoire'
         ];
     }
 }

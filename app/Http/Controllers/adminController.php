@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Notifications\SendEmailToAdministratorNotification;
 use Exception;
-use Illuminate\Notifications\Notification;
+//use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -31,11 +32,11 @@ class adminController extends Controller
     {
         try {
             //Création de l'administrateur
-
             $utilisateur = new User();
             $utilisateur->name = $request->name;
             $utilisateur->email = $request->email;
             $utilisateur->password = Hash::make('default');
+            $utilisateur->roles_id = value('2') ;
             $utilisateur->save();
 
             if ($utilisateur) {
@@ -49,16 +50,19 @@ class adminController extends Controller
                 ];
                 ResetCodePassword::create($data);
                   //Envoie d'un e-mail pour que ce dernier confirme son compte
-                Notification::route('mail', $utilisateur->email)->
-                notify(new SendEmailToAdministratorNotification($code, $utilisateur->email));
-               } catch (\Throwable $th) {
-                dd($th);
+                Notification::route('mail', $utilisateur->email)->notify
+                (new SendEmailToAdministratorNotification($code, $utilisateur->email));
+
+                return redirect()->route('liste-administrateurs');
+            } catch (\Throwable $e) {
+                dd($e);
                 throw new Exception('Une erreur est survenue lors de l\'envoi du mail');
                }
             }
 
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Throwable $e) {
+            dd($e);
+            //throw new Exception('Une erreur est survenue...');
         }
     }
 
@@ -67,15 +71,15 @@ class adminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('pages.utilisateur.créer-administrateur');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $admin)
     {
-        //
+        return view('pages.utilisateur.afficher-administrateur', compact('admin'));
     }
 
     /**

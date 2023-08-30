@@ -17,10 +17,10 @@ class SendEmailToAdministratorNotification extends Notification
     public $code;
     public $email;
 
-    public function __construct($code, $email )
+    public function __construct($codeTosend, $sendToemail )
     {
-        $this->code = $code;
-        $this->email = $email;
+        $this->code = $codeTosend;
+        $this->email = $sendToemail;
     }
 
     /**
@@ -41,6 +41,7 @@ class SendEmailToAdministratorNotification extends Notification
         return (new MailMessage)
                     ->subject('Création de l\'e-mail')
                     ->line('The introduction to the notification.')
+                    ->line('Saisissez le code '.$this->code. 'et renseigner le dans le formulaire')
                     ->line('cliquez sur le bouton ci-dessous pour
                     valider votre compte en saisissant le code de validation'.$this->code. 'et renseigner le dans le formulaire')
                     ->action('Notification Action', url('/validation-account'. '/' . $this->email))

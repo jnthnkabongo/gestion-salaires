@@ -6,6 +6,7 @@ use App\Models\configuration;
 use App\Models\departement;
 use App\Models\employers;
 use App\Models\salaires;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,7 @@ class DashboardControler extends Controller
         $compteurEmployers = employers::all()->count();
         $compteurDepartement = departement::all()->count();
         $compteurSalaire = salaires::all()->count();
+        $compteurUsers = User::all()->count();
 
         $defaultPaymentDateQuery = null; //Initialisation de la date de paiement...
         $PaymentNotification = ""; //Initialisation du message de rappel de la date de paiement
@@ -31,7 +33,7 @@ class DashboardControler extends Controller
             $defaultPaymentDate = $defaultPaymentDateQuery->value; //Recuperation de la valeur de la date de apiement
             $convertPaymentDate = intval($defaultPaymentDate); //Conversion de la date de paiement
 
-            if ($currentDate < $convertPaymentDate) { //Condition sur la date d'echance du paiement 
+            if ($currentDate < $convertPaymentDate) { //Condition sur la date d'echance du paiement
                 $PaymentNotification = "Le paiement aura lieu le " . $defaultPaymentDate . " de ce mois ";
             }else {
                 $nextMonth = Carbon::now()->addMonth();
@@ -41,7 +43,7 @@ class DashboardControler extends Controller
             }
         }
 
-        return view('pages.administration.dashboard', compact('compteurEmployers','compteurDepartement','compteurSalaire','PaymentNotification'));
+        return view('pages.administration.dashboard', compact('compteurEmployers','compteurDepartement','compteurSalaire','PaymentNotification','compteurUsers'));
     }
 
     /**

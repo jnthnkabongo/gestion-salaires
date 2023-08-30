@@ -62,11 +62,12 @@ Route::middleware(['auth'])->group(function () {
     //AMINSITRATEURS
 
     Route::prefix('administrateur')->group(function(){
-        Route::get('affichage', [adminController::class, 'index'])->name('admin-index');
-        Route::get('créer', [adminController::class, 'create'])->name('admin-create');
-        Route::post('créer', [adminController::class, 'store'])->name('admin-store');
-        Route::get('/{administrateur}', [adminController::class, 'update'])->name('admin-indupdateex');
-        Route::get('/{administrateur}', [adminController::class, 'destroy'])->name('admin-destroy');
+        Route::get('liste', [adminController::class, 'index'])->name('liste-administrateurs');
+        Route::get('créer', [adminController::class, 'store'])->name('admin-create');
+        Route::post('créer', [adminController::class, 'create'])->name('creer-administrateur');
+        Route::get('afficher/{admin}', [adminController::class, 'show'])->name('afficher-administrateurs');
+        Route::get('modifier/{admin}', [adminController::class, 'update'])->name('admin-indupdateex');
+        Route::get('supprimer/{admin}', [adminController::class, 'destroy'])->name('supprimer-administrateurs');
 
     });
 });

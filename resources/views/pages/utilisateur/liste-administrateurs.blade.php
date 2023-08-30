@@ -24,7 +24,7 @@
 
                             </div><!--//col-->
                             <div class="col-auto">
-                                <a href="{{ route('afficher-configuration') }}" type="submit" class="btn app-btn-primary">Nouvelle administrateur</a>
+                                <a href="{{ route('admin-create') }}" type="submit" class="btn app-btn-primary">Nouvelle administrateur</a>
                             </div>
                             <div class="col-auto">
                                 <a class="btn app-btn-secondary" href="#">
@@ -71,8 +71,8 @@
                                             <td class="cell">{{ Str::upper($admin->roles->intitule) }}</td>
                                             <td class="cell">{{ $admin->created_at }}</td>
                                             <td class="cell">
-                                                <a class="btn-lg app-btn-secondary" href="{{ route('liste-configuration', $admin->id) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
-                                                <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-configuration',$admin->id) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
+                                                <a class="btn-lg app-btn-secondary" href="{{ route('afficher-administrateurs', $admin->id) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
+                                                <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-administrateurs',$admin->id) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
                                             </td>
                                         </tr>
                                         @endforeach
