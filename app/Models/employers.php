@@ -17,7 +17,7 @@ class employers extends Model
         'sexe',
         'age',
         'contact',
-        'montant_jourmalier',
+        'montant_journalier',
         'departement_id',
         'roles_id'
     ];
@@ -30,5 +30,15 @@ class employers extends Model
     public function departement()
     {
         return $this->belongsTo(departement::class);
+    }
+
+    /**
+     * Get all of the comments for the employers
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function payments()
+    {
+        return $this->hasMany(payment::class);
     }
 }

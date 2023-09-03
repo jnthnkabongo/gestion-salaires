@@ -82,7 +82,7 @@
                                                 <td class="cell">{{ Str::upper($config->value) }}</td>
                                                 <td class="cell">{{ $config->created_at }}</td>
                                                 <td class="cell">
-                                                    <a class="btn-lg app-btn-secondary" href="{{ route('liste-configuration', $config->id) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
+                                                   <!-- <a class="btn-lg app-btn-secondary" href="{{ route('liste-configuration', $config->id) }}">&nbsp;<i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>-->
                                                     <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-configuration',$config->id) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
                                                 </td>
                                             </tr>

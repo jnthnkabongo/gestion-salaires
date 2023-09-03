@@ -8,6 +8,7 @@ use App\Models\departement;
 use App\Models\employers;
 use App\Models\salaires;
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models;
 use App\Models\configuration;
 
@@ -23,6 +24,7 @@ class homeController extends Controller
             $compteurEmployers = employers::all()->count();
             $compteurDepartement = departement::all()->count();
             $compteurSalaire = salaires::all()->count();
+            $compteurUsers = User::all()->count();
             $defaultPaymentDateQuery = null;
             $PaymentNotification = "";
 
@@ -42,7 +44,7 @@ class homeController extends Controller
                     $PaymentNotification = "Le paiement du mois prochain aura lieu le ". $defaultPaymentDate . " du mois de " . $nextMonthName;
                 }
             }
-            return view('pages.administration.dashboard', compact('compteurEmployers', 'compteurDepartement', 'compteurSalaire','PaymentNotification'));
+            return view('pages.administration.dashboard', compact('compteurEmployers', 'compteurDepartement', 'compteurSalaire','PaymentNotification','compteurUsers'));
         }if ($roles == '2') {
             return view('pages.users.index');
         }else {

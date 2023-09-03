@@ -106,7 +106,7 @@
                                                 button: "OK"
                                             });
                                         </script>
-                                    @endif
+                                @endif
                             </div>
 
                         </div><!--//app-card-body-->

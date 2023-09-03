@@ -49,7 +49,8 @@ Route::middleware(['auth'])->group(function () {
     //FIN CRUD DEPARTEMENT
 
     //CRUD SALAIRES
-    Route::get('liste-salaires', [SalairesController::class, 'index'])->name('liste-salaire');
+    Route::get('liste-salaires', [SalairesController::class, 'index'])->name('liste-salaire'); //Liste des salaires
+    Route::get('initialiser-paiement', [SalairesController::class, 'store'])->name('initialiser-paiement'); //Initialiser le paiement
     //FIN CRUD SALAIRES
 
     //CONFIGURATION
