@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Exception;
+use PDF;
 
 class SalairesController extends Controller
 {
@@ -36,13 +37,19 @@ class SalairesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    //Vue du PDF de l'employé
     public function create(payment $salaire)
     {
       try {
         $FullPaymentInfo = payment::with('employers')->find($salaire->id);
+        //Generer le PDF
 
-        return view('pages.administration.facture', compact('FullPaymentInfo'));
+        $Pdf = PDF::loadView('pages.administration.facture', compact('FullPaymentInfo'));
+        return $Pdf->download('facture_'. $FullPaymentInfo->employers->nom .'.pdf');
+
+       // return view('pages.administration.facture', compact('FullPaymentInfo'));
       } catch (Exception $th) {
+        dd($th);
         throw new Exception('message' , 'Une erreur est survenue au moment du telechargement');
 
       }

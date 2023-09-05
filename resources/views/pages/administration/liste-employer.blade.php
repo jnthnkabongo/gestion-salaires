@@ -87,7 +87,7 @@
                                             <td class="cell">
                                                 {{ $resultat->montant_journalier * 31}}
                                                 <span class="badge bg-success">
-                                                    Fc
+                                                    $
                                                 </span>
                                             </td>
                                             <td class="cell">{{ Str::upper( $resultat->departement->nom_dep) }}</td>
