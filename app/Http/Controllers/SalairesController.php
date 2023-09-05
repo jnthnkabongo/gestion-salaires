@@ -9,6 +9,7 @@ use App\Models\employers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+use Exception;
 
 class SalairesController extends Controller
 {
@@ -35,9 +36,16 @@ class SalairesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(payment $salaire)
     {
-        //
+      try {
+        $FullPaymentInfo = payment::with('employers')->find($salaire->id);
+
+        return view('pages.administration.facture', compact('FullPaymentInfo'));
+      } catch (Exception $th) {
+        throw new Exception('message' , 'Une erreur est survenue au moment du telechargement');
+
+      }
     }
 
     /**

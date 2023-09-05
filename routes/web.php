@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     //CRUD SALAIRES
     Route::get('liste-salaires', [SalairesController::class, 'index'])->name('liste-salaire'); //Liste des salaires
     Route::get('initialiser-paiement', [SalairesController::class, 'store'])->name('initialiser-paiement'); //Initialiser le paiement
+    Route::get('telecharger-pdf/{salaire}', [SalairesController::class, 'create'])->name('telecharger-pdf'); //Telechargement des pdf
     //FIN CRUD SALAIRES
 
     //CONFIGURATION

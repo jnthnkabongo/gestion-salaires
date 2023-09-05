@@ -92,10 +92,9 @@
                                                 <td class="cell">{{ $salaire->month }}</td>
                                                 <td class="cell">{{ $salaire->date }}</td>
                                                 <td class="cell">{{ $salaire->validate_date }}</td>
-                                                <td class="cell">{{ $salaire->status }}</td>
+                                                <td class="cell"><span class="badge bg-success">{{ $salaire->status }}</span></td>
                                                 <td class="cell">
-                                                    <a class="btn-lg app-btn-secondary" href="{{ route('afficher-employers', $salaire->id) }}"><i class="fa-solid fa-edit"></i>&nbsp;Modifier&nbsp;</a>
-                                                    <a class="btn-sm app-btn-secondary" href="{{ route('supprimer-employers', $salaire->id) }}"><i class="fa-solid fa-trash"></i>&nbsp;Supprimer&nbsp;</a>
+                                                    <a class="btn-lg app-btn-secondary" href="{{ route('telecharger-pdf', $salaire->id) }}">&nbsp;<i class="fa-solid fa-download"></i>&nbsp;Télécharger&nbsp;</a>
                                                 </td>
                                             </tr>
                                             @empty
