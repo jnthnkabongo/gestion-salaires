@@ -60,6 +60,7 @@ class SalairesController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $mois = ['JANUARY' => 'JANVIER',
                 'FEBRUARY'=>'FEVRIER',
                 'MARCH'=>'MARS',
