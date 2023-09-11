@@ -46,7 +46,9 @@ class homeController extends Controller
             }
             return view('pages.administration.dashboard', compact('compteurEmployers', 'compteurDepartement', 'compteurSalaire','PaymentNotification','compteurUsers'));
         }if ($roles == '2') {
-            return view('pages.users.index');
+
+            $administrateurliste = User::with('roles')->paginate(10);
+            return view('pages.utilisateur.liste-administrateurs', compact('administrateurliste'));
         }else {
             return view('auth.login');
         }

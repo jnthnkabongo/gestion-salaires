@@ -82,9 +82,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($salairesliste as $salaire)
+                                        @forelse ($salairesliste as $i=> $salaire)
                                             <tr>
-                                                <td class="cell">{{ $salaire->id }}</td>
+                                                <td class="cell">{{ ++$i }}</td>
                                                 <td class="cell">{{ $salaire->reference }}</td>
                                                 <td class="cell">{{ Str::upper($salaire->employers->nom) }}</td>
                                                 <td class="cell">{{ $salaire->amount }}</td>

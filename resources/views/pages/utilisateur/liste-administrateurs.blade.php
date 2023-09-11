@@ -63,9 +63,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($administrateurliste as $admin)
+                                        @foreach ($administrateurliste as $i=> $admin)
                                         <tr>
-                                            <td class="cell">{{ $admin->id }}</td>
+                                            <td class="cell">{{ ++$i }}</td>
                                             <td class="cell">{{ Str::upper($admin->name) }}</td>
                                             <td class="cell">{{ Str::upper($admin->email) }}</td>
                                             <td class="cell">{{ Str::upper($admin->roles->intitule) }}</td>

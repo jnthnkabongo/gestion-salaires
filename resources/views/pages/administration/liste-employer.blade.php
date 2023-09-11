@@ -74,9 +74,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($employersliste as $resultat)
+                                        @foreach ($employersliste as $i => $resultat)
                                         <tr>
-                                            <td class="cell">{{ $resultat->id }}</td>
+                                            <td class="cell">{{ ++$i }}</td>
                                             <td class="cell"><span class="truncate">{{ Str::upper( $resultat->nom) }}</span></td>
                                             <td class="cell">{{ Str::upper( $resultat->postnom) }}</td>
                                             <td class="cell">{{ Str::upper( $resultat->prenom) }}</td>

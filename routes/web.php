@@ -21,10 +21,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//ROUTES DE SESSION
 
-Route::get('/', [authController::class, 'index'])->name('index');
-Route::post('/', [authController::class, 'create'])->name('soumettre');
-Route::get('gestion-app', [homeController::class, 'index'])->name('redirect');
+Route::get('/', [authController::class, 'index'])->name('index'); //Page d'accueil
+Route::post('/', [authController::class, 'create'])->name('soumettre'); //Soumission du formulaire
+Route::get('gestion-app', [homeController::class, 'index'])->name('redirect'); //Route de redirection
+Route::get('logout', [authController::class, 'destroy'])->name('logout'); //Deconnexion
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [DashboardControler::class, 'index'])->name('dashboard');

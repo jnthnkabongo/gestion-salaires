@@ -38,7 +38,15 @@
                         <small class="text-muted">En vous connectant vous acceptez les conditions d'utilisation</small>
                     </div>
                 </form>
-
+                @if(Session::has('message'))
+                <script>
+                    swal("message", "{{ Session::get('message') }}", 'warning', {
+                        showConfirmButton: false,
+                        title: '',
+                        timer: 1500
+                    });
+                </script>
+                @endif
             </div>
         </div>
         <div class="col-lg-3"></div>

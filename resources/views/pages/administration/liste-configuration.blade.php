@@ -62,9 +62,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($configurationliste as $config)
+                                            @foreach ($configurationliste as $i=> $config)
                                             <tr>
-                                                <td class="cell">{{ $config->id }}</td>
+                                                <td class="cell">{{ ++$i }}</td>
                                                 <td class="cell">
                                                     @if($config->type == 'PAYMENT_DATE')
                                                         DATE MENSUEL DE PAIEMENT

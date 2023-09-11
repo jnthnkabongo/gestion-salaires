@@ -219,7 +219,7 @@
                                 <td colspan="2">
                                     <div class="single_item">
                                         <span>Total frais</span>
-                                        <span class="value">0</span>
+                                        <span class="value">{{ $FullPaymentInfo->amount }} $</span>
                                     </div>
                                     <div class="single_item">
                                         <span>Total payé</span>

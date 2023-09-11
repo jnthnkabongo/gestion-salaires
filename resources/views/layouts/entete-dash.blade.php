@@ -8,7 +8,7 @@
         <link href="{{ asset('dist/css/bootstrap.css') }}" rel="stylesheet" >
         <link href="{{ asset('dist/css/bootstrap.min.css') }}" rel="stylesheet" >
         <link href="{{ asset('fontawesome-free/css/all.css') }}" rel="stylesheet">
-        <script defer src="{{ asset('assets/plugins/fontawesome/js/all.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/fontawesome/js/all.min.js') }}"></script>
         <link href="{{ asset('assets/css/portal.css')}}" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -138,13 +138,17 @@
                                     </div><!--//app-utility-item-->
 
                                     <div class="app-utility-item app-user-dropdown dropdown">
+                                        @auth()
+                                        {{Str::upper( \Illuminate\Support\Facades\Auth::user()->roles->intitule )}}
                                         <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/images/user.png" alt="user profile"></a>
                                         <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-                                            <li><a class="dropdown-item" href="account.html">Account</a></li>
-                                            <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+                                            <li class="dropdown-item">Utilisateur {{Str::upper( \Illuminate\Support\Facades\Auth::user()->name )}}</li>
+                                            <li><a class="dropdown-item" href="account.html">Profil</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('liste-configuration') }}">Configuration</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item" href="login.html">Log Out</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('logout') }}">Se déconnecter</a></li>
                                         </ul>
+                                        @endauth
                                     </div><!--//app-user-dropdown-->
                                 </div><!--//app-utilities-->
                             </div><!--//row-->
@@ -250,13 +254,21 @@
                 @yield('content')
             </div>
         </div>
-        <script src="{{ asset('dist/js/bootstrap.js') }}"></script>
+      <!--  <script src="{{ asset('dist/js/bootstrap.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('fontawesome-free/js/all.js') }}"></script>
+
+
+    Javascript
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+     Page Specific JS --
+    <script src="assets/js/app.js"></script>-->
         <script src="{{ asset('assets/plugins/popper.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
         <script src="{{ asset('assets/js/app.js') }}"></script>
     </body>
 </html>
+

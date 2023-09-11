@@ -63,9 +63,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($departementsliste as $result)
+                                        @foreach ($departementsliste as $i=> $result)
                                         <tr>
-                                            <td class="cell">{{ $result->id }}</td>
+                                            <td class="cell">{{ ++$i }}</td>
                                             <td class="cell">{{ Str::upper($result->nom_dep )}}</td>
                                             <td class="cell">{{ Str::upper($result->responsable_dep) }}</td>
                                             <td class="cell">{{ $result->created_at }}</td>
