@@ -82,9 +82,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($salairesliste as $i=> $salaire)
+                                        @forelse ($salairesliste as $salaire)
                                             <tr>
-                                                <td class="cell">{{ ++$i }}</td>
+                                                <td class="cell">{{ ($salairesliste->perPage() * ($salairesliste->currentPage() - 1 ))+ $loop->iteration  }}</td>
                                                 <td class="cell">{{ $salaire->reference }}</td>
                                                 <td class="cell">{{ Str::upper($salaire->employers->nom) }}</td>
                                                 <td class="cell">{{ $salaire->amount }}</td>

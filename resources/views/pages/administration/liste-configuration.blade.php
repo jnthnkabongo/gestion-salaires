@@ -64,7 +64,7 @@
                                         <tbody>
                                             @foreach ($configurationliste as $i=> $config)
                                             <tr>
-                                                <td class="cell">{{ ++$i }}</td>
+                                                <td class="cell">{{  ($configurationliste->perPage() * ($configurationliste->currentPage() - 1 ))+ $loop->iteration }}</td>
                                                 <td class="cell">
                                                     @if($config->type == 'PAYMENT_DATE')
                                                         DATE MENSUEL DE PAIEMENT

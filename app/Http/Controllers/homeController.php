@@ -47,8 +47,31 @@ class homeController extends Controller
             return view('pages.administration.dashboard', compact('compteurEmployers', 'compteurDepartement', 'compteurSalaire','PaymentNotification','compteurUsers'));
         }if ($roles == '2') {
 
+            $compteurEmployers = employers::all()->count();
+            $compteurDepartement = departement::all()->count();
+            $compteurSalaire = salaires::all()->count();
+            $compteurUsers = User::all()->count();
+            $defaultPaymentDateQuery = null;
+            $PaymentNotification = "";
+
+            $currentDate = Carbon::now()->day;
+            $defaultPaymentDateQuery = configuration::where('type', 'PAYMENT_DATE')->first();
+
+            if ($defaultPaymentDateQuery) {
+                $defaultPaymentDate = $defaultPaymentDateQuery->value;
+                $convertPaymentDate = intval($defaultPaymentDate);
+
+                if ($currentDate < $convertPaymentDate) {
+                    $PaymentNotification = "Le paiement doit avoir lieu ". $defaultPaymentDate ." de ce mois";
+                }else {
+                    $nextMonth = Carbon::now()->addMonth();
+                    $nextMonthName = $nextMonth->format('F');
+
+                    $PaymentNotification = "Le paiement du mois prochain aura lieu le ". $defaultPaymentDate . " du mois de " . $nextMonthName;
+                }
+            }
             $administrateurliste = User::with('roles')->paginate(10);
-            return view('pages.utilisateur.liste-administrateurs', compact('administrateurliste'));
+            return view('pages.utilisateur.dashboard-user', compact('compteurEmployers', 'compteurDepartement', 'compteurSalaire','PaymentNotification','compteurUsers','administrateurliste'));
         }else {
             return view('auth.login');
         }

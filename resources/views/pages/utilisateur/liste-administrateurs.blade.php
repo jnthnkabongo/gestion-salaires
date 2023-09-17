@@ -1,4 +1,4 @@
-@extends('layouts.entete-dash')
+@extends('layouts.entete-user')
 @section('content')
 <div class="app-wrapper">
 

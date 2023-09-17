@@ -66,7 +66,9 @@ Route::middleware(['auth'])->group(function () {
     //AMINSITRATEURS
 
     Route::prefix('administrateur')->group(function(){
-        Route::get('liste', [adminController::class, 'index'])->name('liste-administrateurs');
+        Route::get('dashboard-user', [DashboardControler::class, 'create' ])->name('dashboard-user');
+        Route::get('liste', [adminController::class, 'index'])->name('liste-administrateur');
+        Route::get('liste-user', [adminController::class, 'store'])->name('liste-employer-user');
         Route::get('créer', [adminController::class, 'store'])->name('admin-create');
         Route::post('créer', [adminController::class, 'create'])->name('creer-administrateur');
         Route::get('afficher/{admin}', [adminController::class, 'show'])->name('afficher-administrateurs');
